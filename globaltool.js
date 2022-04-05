@@ -27,13 +27,13 @@ const $new = function(tag, {parent, attributes, classes, text, id}) {
 /**
  * Creates a global event on body, which is triggered when the event target matches the given selector.
  * @param {string} event The event to listen for.
- * @param {string} at The selector to match.
+ * @param {string} selector The selector to match.
  * @param {EventListenerOrEventListenerObject} callback The callback to call when the event is triggered.
  * @param {boolean | AddEventListenerOptions} [options] The options to use.
  */
-const $globalEvent = function(event, at, callback, options) {
+const $globalEvent = function(event, selector, callback, options) {
     document.body.addEventListener(event, function(e) {
-        if (e.target.matches(at)) callback(e);
+        if (e.target.matches(selector)) callback(e);
     }, options);
 };
 
