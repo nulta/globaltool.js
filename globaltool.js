@@ -1,23 +1,23 @@
-/// globaltool.js - 1.0 ///
+/// globaltool.js - 1.1 ///
 
 // $q: Alias for document.querySelector
-let $q = document.querySelector;
-$q = $q.bind(document);
+const $q = document.querySelector.bind(document);
 
 // $qAll: Alias for document.querySelectorAll
-let $qAll = document.querySelectorAll;
-$qAll = $qAll.bind(document); 
+const $qAll = document.querySelectorAll.bind(document);
 
 
 /**
  * Creates a new element with given settings.
  * @return {Element} The new element.
  */
-const $new = function(tag, {parent, attributes, classes, text, id}) {
+const $new = function(tag, { parent, attributes, classes, text, id }) {
     const el = document.createElement(tag);
     if (parent) parent.appendChild(el);
-    if (attributes) for (var key in attributes) el.setAttribute(key, attributes[key]);
-    if (classes) for (var i = 0; i < classes.length; i++) el.classList.add(classes[i]);
+    if (attributes)
+        for (var key in attributes) el.setAttribute(key, attributes[key]);
+    if (classes)
+        for (var i = 0; i < classes.length; i++) el.classList.add(classes[i]);
     if (text) el.appendChild(document.createTextNode(text));
     if (id) el.id = id;
     return el;
@@ -64,7 +64,7 @@ $ajax._request = async function(method, url, data, color) {
         // Append to baseURI
         url = $ajax._baseURI + url;
     }
-    
+
     data = data || {};
     data.method = method;
     data.headers = data.headers || {};
