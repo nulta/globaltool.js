@@ -2,6 +2,7 @@ name: Minify JS
 on:
   push:
     branches: [ master ]
+    paths: [ "globaltool.js" ]
   workflow_dispatch:
 
 jobs:
